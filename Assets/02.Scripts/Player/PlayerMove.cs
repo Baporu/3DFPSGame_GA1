@@ -4,11 +4,15 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private const float Gravity = -20f;
+    private const int MaxJumps = 2;
+    
     private float _yVelocity = 0f;  // 위아래 속도, 매 프레임마다 중력 가속도가 붙는다.
+    private int   _jumpCount = 0;   // 점프 횟수
     
     [SerializeField] private float _moveSpeed = 7f;
     [SerializeField] private float _sprintSpeed = 12f;
     [SerializeField] private float _jumpPower = 10f;
+    
     [SerializeField] private CharacterController _characterController;
 
     private void Awake()
@@ -37,14 +41,16 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            // 땅에 서있으면 중력 초기화
+            // 땅에 서있으면 중력/점프 초기화
             _yVelocity = -1f;
+            _jumpCount = 0;
         }
         
-        // 4. 만약에 점프키를 누르면 && 땅이라면 ... 점프를한다.
-        if (Input.GetButtonDown("Jump") && _characterController.isGrounded)
+        // 4. 만약에 점프키를 누르면 && 점프 카운트가 MaxJumps 이하라면 ... 점프를한다.
+        if (Input.GetButtonDown("Jump") && _jumpCount < MaxJumps)
         {
             _yVelocity = _jumpPower;
+            _jumpCount++;
         }
         
         // 5. 속도를 구한다.
