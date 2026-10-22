@@ -198,6 +198,5 @@ public class Zombie : MonoBehaviour
             Debug.Log("플레이어를 때렸습니다.");
             _attackTimer = 0f;
         }
-       
     }
 }

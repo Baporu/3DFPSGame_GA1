@@ -95,6 +95,7 @@ public class PlayerGunFire : MonoBehaviour
             
             
             hitInfo.collider.GetComponent<Zombie>()?.TakeDamage(_damage);
+            hitInfo.collider.GetComponent<Drum>()?.Damage(_damage);
         }
     }
 }
