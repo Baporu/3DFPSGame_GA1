@@ -1,17 +1,16 @@
 using UnityEngine;
 
 using System.Collections.Generic;
-using NUnit.Framework;
 
 public class ListTest : MonoBehaviour
 {
     // 자료구조(Data Structure)
     // 이런 데이터들을 "효율적"으로 관리(CRUDS)하기 위해 저장하는 구조 방식
     // C - Creat:   생성
-    // R - Remove:  삭제
+    // R - Read:    읽기
     // U - Update:  수정
     // D - Delete:  삭제
-    // S - Search : 조회
+    // S - Search : 검색
     // 선형   자료구조   : 배열, 리스트, 큐, 스택 
     // 비선형 자료구조   : 트리, 그래프, 해쉬테이블
 
@@ -56,7 +55,9 @@ public class ListTest : MonoBehaviour
             Debug.Log(age);        // foreach를 통한 조회
         }
         
-        // 정리과제는 리스트와 스택, 큐의 차이점과 장단점 그리고 게임 개발에서 언제 쓰이는지 판단할 수 있는 눈
+        // 정리과제는 리스트의 여러가지 속성과 기능
+        // 및 어댑터(스택, 큐)의 차이점과
+        // -> 장단점 그리고 게임 개발에서 언제 쓰이는지 판단할 수 있는 눈
     }
     
     
