@@ -95,7 +95,12 @@ public class PlayerGunFire : MonoBehaviour
             
             
             hitInfo.collider.GetComponent<Zombie>()?.TakeDamage(_damage);
-            hitInfo.collider.GetComponent<Drum>()?.Damage(_damage);
+            hitInfo.collider.GetComponent<Drum>()?.TakeDamage(_damage);
+            hitInfo.collider.GetComponent<Box>()?.TakeDamage(_damage);
+            
+            // 황유찬 :         Player
+            // 김민쉬:     Zombie, Boss
+            // 박현서:  Drum, Box, Bird
         }
     }
 }
