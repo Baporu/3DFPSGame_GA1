@@ -231,6 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 152117606}
+  - component: {fileID: 152117607}
   m_Layer: 5
   m_Name: UI_PlayerStats
   m_TagString: Untagged
@@ -259,6 +260,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &152117607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152117605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3833e76991d52ef4886ccea1183934f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_PlayerStats
+  _healthSlider: {fileID: 227705347}
+  _staminaSlider: {fileID: 307994174}
+  _playerMove: {fileID: 1620558213}
 --- !u!1 &220785612
 GameObject:
   m_ObjectHideFlags: 0
