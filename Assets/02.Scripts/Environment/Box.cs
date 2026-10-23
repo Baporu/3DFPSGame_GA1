@@ -4,7 +4,7 @@ using UnityEngine;
 public class Box : MonoBehaviour, IDamageable
 {
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(DamageInfo damageInfo)
     {
         // Todo. 뭔가 해야함
     }
