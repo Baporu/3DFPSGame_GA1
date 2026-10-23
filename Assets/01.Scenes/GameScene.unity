@@ -274,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_PlayerStats
   _healthSlider: {fileID: 227705347}
   _staminaSlider: {fileID: 307994174}
+  _player: {fileID: 1620558217}
   _playerMove: {fileID: 1620558213}
 --- !u!1 &220785612
 GameObject:
@@ -2124,6 +2125,7 @@ GameObject:
   - component: {fileID: 1620558214}
   - component: {fileID: 1620558215}
   - component: {fileID: 1620558216}
+  - component: {fileID: 1620558217}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -2296,6 +2298,19 @@ MonoBehaviour:
   _firePoint: {fileID: 2015785248}
   _bombPrefab: {fileID: 64837993550276244, guid: 9a61cdad899c6ca44b785e76de4d9420, type: 3}
   _throwPower: 15
+--- !u!114 &1620558217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620558207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793b08d70e8338a41992fffba138c65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  _maxHealth: 100
 --- !u!1001 &1674000642
 PrefabInstance:
   m_ObjectHideFlags: 0

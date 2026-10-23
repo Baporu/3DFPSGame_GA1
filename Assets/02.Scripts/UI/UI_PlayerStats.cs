@@ -7,12 +7,13 @@ public class UI_PlayerStats : MonoBehaviour
     [SerializeField] private Slider _healthSlider;
     [SerializeField] private Slider _staminaSlider;
 
+    [SerializeField] private Player _player;
     [SerializeField] private PlayerMove _playerMove;
 
 
     private void Update()
     {
-        //_healthSlider.value = 플레이어 체력 / 플레이어 최대 체력;
+        _healthSlider.value = _player.Health /  _player.MaxHealth;
         _staminaSlider.value = _playerMove.Stamina / PlayerMove.MaxStamina;
     }
 }
