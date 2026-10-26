@@ -1785,6 +1785,7 @@ GameObject:
   - component: {fileID: 486625966}
   - component: {fileID: 486625968}
   - component: {fileID: 486625967}
+  - component: {fileID: 486625969}
   m_Layer: 5
   m_Name: UI_Minimap
   m_TagString: Untagged
@@ -1845,6 +1846,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &486625969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486625965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9733b622b8dfaad429048fa76395235c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Minimap
+  _minimapCamera: {fileID: 101717516}
+  _zoomInButton: {fileID: 148668043}
+  _zoomOutButton: {fileID: 444105786}
 --- !u!222 &486625968
 CanvasRenderer:
   m_ObjectHideFlags: 0
