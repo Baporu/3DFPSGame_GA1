@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -40,6 +41,9 @@ public class Zombie : MonoBehaviour, IDamageable
 
     public float MaxHealth => _maxHealth;
     public float Health => _health;
+
+    // 좀비가 죽는 순간 발행하는 이벤트 (스포너, UI 등이 구독한다)
+    public event Action<Zombie> Died;
     
     
     private ZombieState _state = ZombieState.Idle;
@@ -109,6 +113,7 @@ public class Zombie : MonoBehaviour, IDamageable
         {
             Debug.Log($"{_state} -> Death");
             _state = ZombieState.Death;
+            Died?.Invoke(this);
             StartCoroutine(Death_Coroutine());
         }
        
