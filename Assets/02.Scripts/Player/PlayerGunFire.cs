@@ -42,10 +42,8 @@ public class PlayerGunFire : MonoBehaviour
             _bulletCount--;
             _fireTimer = _fireInterval;
 
-            if (_animator.GetFloat("MoveMotion") == 0f)
-            {
-                _animator.SetTrigger("Attack");
-            }
+            _animator.SetTrigger("Attack");
+            
             Shoot();
             
             // 이 방식은: 이 모노비헤이비어가 등록한 모든 코루틴을 실행 취소
