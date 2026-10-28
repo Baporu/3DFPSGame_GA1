@@ -5,18 +5,44 @@ public class PlayerBombFire : MonoBehaviour
 {
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Bomb _bombPrefab;
-    [SerializeField] private float _throwPower = 15f;
+    [SerializeField] private float _minThrowPower = 10f;
+    [SerializeField] private float _maxThrowPower = 20f;
+    [SerializeField] private float _maxChargeTime = 5f;
+    
+    private bool _isCharging;
+    private float _throwPower;
+    private float _chargeSpeed;
+    
+    
+    private void Awake()
+    {
+        _throwPower = _minThrowPower;
+        _chargeSpeed = (_maxThrowPower - _minThrowPower) / _maxChargeTime;
+    }
     
     private void Update()
     {
-        if (GameManager.Instance.State != GameState.Playing) return;
+        if (GameManager.Instance.State != GameState.Playing)
+            return;
 
         // 1. 마우스 오른쪽 버튼 입력 받기
         if (Input.GetButtonDown("Fire2"))
         {
-            Shoot();
+            _isCharging = true;
         }
-        
+
+        if (Input.GetButton("Fire2") && _isCharging)
+        {
+            _throwPower += _chargeSpeed * Time.deltaTime;
+            _throwPower = Mathf.Min(_throwPower, _maxThrowPower);
+        }
+
+        if (Input.GetButtonUp("Fire2") && _isCharging)
+        {
+            _isCharging = false;
+            Shoot();
+            _throwPower = _minThrowPower;
+        }
     }
 
     private void Shoot()
