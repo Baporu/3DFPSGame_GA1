@@ -17,10 +17,13 @@ public class PlayerGunFire : MonoBehaviour
     private float _fireTimer = 0f;
     private int _bulletCount = 0;
     private Coroutine _reloadCoroutine = null;
+    private Animator _animator;
     
 
     private void Start()
     {
+        _animator = GetComponentInChildren<Animator>();
+        
         _bulletCount = _maxBulletCount;
     }
     
@@ -38,6 +41,11 @@ public class PlayerGunFire : MonoBehaviour
         {
             _bulletCount--;
             _fireTimer = _fireInterval;
+
+            if (_animator.GetFloat("MoveMotion") == 0f)
+            {
+                _animator.SetTrigger("Attack");
+            }
             Shoot();
             
             // 이 방식은: 이 모노비헤이비어가 등록한 모든 코루틴을 실행 취소

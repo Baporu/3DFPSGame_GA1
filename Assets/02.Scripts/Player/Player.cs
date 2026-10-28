@@ -31,6 +31,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             Debug.Log("플레이어가 쓰러졌다!");
             GameManager.Instance.GameOver();
+            GetComponentInChildren<Animator>().SetFloat("MoveMotion", 0f);
         }
     }
 }

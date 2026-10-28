@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
     private const float Gravity = -20f;
     private const int MaxJumps = 2;
     public const float MaxStamina = 100f;
+
+    private Animator _animator;
     
     private float _yVelocity = 0f;  // 위아래 속도, 매 프레임마다 중력 가속도가 붙는다.
     private int   _jumpCount = 0;   // 점프 횟수
@@ -29,6 +31,8 @@ public class PlayerMove : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _stamina = MaxStamina;
+        
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -45,10 +49,14 @@ public class PlayerMove : MonoBehaviour
         // 2. 키보드 입력에 따라 방향을 구한다.
         Vector3 direction = new Vector3(h, 0, v);
         direction.Normalize(); // 대각선이어도 방향의 길이 1로 바꾸기 위해
+
         // 캐릭터의 회전 방향을 기준으로 로컬 방향 벡터를 월드 방향 벡터로 변환한다.
         direction = transform.TransformDirection(direction);
         // 로컬 좌표계: 한 대상을 중심
         // 월드 좌표계: 세상을 중심
+
+        // 이동 블렌딩 트리를 호출하고 벡터의 크기 값을 넘겨준다.
+        _animator.SetFloat("MoveMotion", direction.magnitude);
 
         // 3. 땅에 서있지 않을때만 중력을 누적한다.
         if (_characterController.isGrounded == false)
