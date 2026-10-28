@@ -48,6 +48,13 @@ dotnet format 3DFPSGame_GA1.sln --severity warn --include Assets/02.Scripts/
 - **UI**: `UI_` 접두사 클래스(`UI_PlayerStats`, `UI_HitEffect`, `UI_Minimap`)는 TextMeshPro와 uGUI를 사용하며, 대개 Inspector 참조로 연결된다.
 - `Assets/02.Scripts/Example/`은 C# 문법 학습용 예제이고 게임 로직과는 무관하다.
 
+## Unity 에디터 작업
+- 씬·프리팹 값은 Unity MCP 도구로 바꾸고, .unity·.prefab 파일을 직접 고치지 않습니다.
+- 값을 바꾸기 전에 대상이 프리팹 에셋인지 씬 오브젝트인지 확인합니다.
+- 저장(save_scene, save_all) 전에 바꾼 내용을 보고합니다.
+- Play Mode 중에는 값을 바꾸지 않습니다.
+- 에셋 삭제와 프로젝트 설정 변경은 요청받았을 때만 합니다.
+
 ## 코드 리뷰 기준
 
 리뷰를 요청받으면 `Docs/CodeReviewGuide.md`를 따른다. 핵심은 다음과 같다.

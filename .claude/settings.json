@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "defaultMode": "manual",
+    "allow": [
+      "Bash(git status)",
+      "PowerShell(git status)",
+      "mcp__unity-editor-mcp__console",
+      "mcp__unity-editor-mcp__console_status",
+      "mcp__unity-editor-mcp__editor_status",
+      "mcp__unity-editor-mcp__find_gameobjects",
+      "mcp__unity-editor-mcp__get_scene_hierarchy",
+      "mcp__unity-editor-mcp__get_component_properties",
+      "mcp__unity-editor-mcp__get_serialized_fields"
+    ],
+    "ask": [
+      "Bash(git commit *)", "Bash(git push *)",
+      "PowerShell(git commit *)", "PowerShell(git push *)",
+      "mcp__unity-editor-mcp__eval"
+    ],
+    "deny": [
+      "Read(/Library/**)", "Edit(/Library/**)",
+      "Read(/Build/**)", "Edit(/Build/**)",
+      "Read(/Builds/**)", "Edit(/Builds/**)",
+      "Edit(/ProjectSettings/**)",
+      "Read(/.env)", "Read(/.env.*)",
+      "Edit(/.env)", "Edit(/.env.*)",
+      "mcp__unity-editor-mcp__delete_asset"
+    ]
+  }
+}
