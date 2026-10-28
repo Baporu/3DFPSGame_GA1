@@ -13,9 +13,13 @@ public class PlayerBombFire : MonoBehaviour
     private float _throwPower;
     private float _chargeSpeed;
     
+    private Animator _animator;
+    
     
     private void Awake()
     {
+        _animator = GetComponentInChildren<Animator>();
+        
         _throwPower = _minThrowPower;
         _chargeSpeed = (_maxThrowPower - _minThrowPower) / _maxChargeTime;
     }
@@ -40,7 +44,10 @@ public class PlayerBombFire : MonoBehaviour
         if (Input.GetButtonUp("Fire2") && _isCharging)
         {
             _isCharging = false;
+            
+            _animator.SetTrigger("Throw");
             Shoot();
+            
             _throwPower = _minThrowPower;
         }
     }
