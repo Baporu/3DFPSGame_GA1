@@ -79,3 +79,7 @@ crashlytics-build.properties
 
 # macOS Finder 생성 파일
 .DS_Store
+
+# Claude Code의 스크린샷 폴더
+/[Aa]ssets/[Ss]creenshots.meta
+/[Aa]ssets/[Ss]creenshots/
