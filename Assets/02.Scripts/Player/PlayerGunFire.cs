@@ -18,11 +18,17 @@ public class PlayerGunFire : MonoBehaviour
     [SerializeField] private GameObject[] _muzzleFlashes;
     [SerializeField] private float _flashTime = 0.05f;
 
+    [Header("총알 궤적 이펙트")]
+    [SerializeField] private LineRenderer _bulletTracer;
+    [SerializeField] private Transform _muzzlePoint; // 궤적 시작 위치(총구)
+    [SerializeField] private float _tracerTime = 0.2f;
+
     private float _fireTimer = 0f;
     private int _bulletCount = 0;
     public int BulletCount => _bulletCount;
 
     private Coroutine _reloadCoroutine = null;
+    private Coroutine _tracerCoroutine = null;
     private Animator _animator;
 
     public event Action<int, int> OnBulletChanged;
@@ -107,6 +113,11 @@ public class PlayerGunFire : MonoBehaviour
 
         // 4. 레이를 발사하고, 만일 부딛힌 물체가 있다면 이펙트 표시하기
         bool isHit = Physics.Raycast(ray, out hitInfo, _range);
+
+        // 5. 총구에서 맞은 지점(못 맞췄다면 사거리 끝)까지 총알 궤적을 그린다.
+        Vector3 endPoint = isHit ? hitInfo.point : ray.origin + ray.direction * _range;
+        ShowBulletTracer(endPoint);
+
         if (isHit)
         {
             // Debug.Log($"{hitInfo.collider.name}이 총알을 맞았다. 대미지: {_damage}");
@@ -135,6 +146,32 @@ public class PlayerGunFire : MonoBehaviour
             // 김민쉬:     Zombie, Boss
             // 박현서:  Drum, Box, Bird
         }
+    }
+
+    private void ShowBulletTracer(Vector3 endPoint)
+    {
+        if (_bulletTracer == null) return;
+
+        Vector3 startPoint = _muzzlePoint != null ? _muzzlePoint.position : Camera.main.transform.position;
+        _bulletTracer.SetPosition(0, startPoint);
+        _bulletTracer.SetPosition(1, endPoint);
+
+        // 연사 중에도 궤적이 겹쳐 꺼지지 않도록 이전 코루틴을 취소하고 다시 시작한다.
+        if (_tracerCoroutine != null)
+        {
+            StopCoroutine(_tracerCoroutine);
+        }
+        _tracerCoroutine = StartCoroutine(BulletTracer_Coroutine());
+    }
+
+    private IEnumerator BulletTracer_Coroutine()
+    {
+        _bulletTracer.enabled = true;
+
+        yield return new WaitForSeconds(_tracerTime);
+
+        _bulletTracer.enabled = false;
+        _tracerCoroutine = null;
     }
 
     private IEnumerator MuzzleFlash_Coroutine()
