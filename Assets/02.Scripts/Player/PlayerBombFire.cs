@@ -20,7 +20,7 @@ public class PlayerBombFire : MonoBehaviour
     private Animator _animator;
     private Player _player;
 
-    public Action<int> OnBombFired;
+    public event Action<int> OnBombFired;
 
 
     private void Awake()

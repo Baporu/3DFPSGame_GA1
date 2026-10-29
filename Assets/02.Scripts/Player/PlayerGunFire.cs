@@ -22,7 +22,7 @@ public class PlayerGunFire : MonoBehaviour
     private Coroutine _reloadCoroutine = null;
     private Animator _animator;
 
-    public Action<int, int> OnBulletChanged;
+    public event Action<int, int> OnBulletChanged;
 
 
     private void Awake()

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,7 @@ public class UI_PlayerWeapons : MonoBehaviour
     {
         if (_weaponImage == null)
         {
-            _weaponImage = GetComponent<Image>() ?? GetComponentInChildren<Image>();
+            _weaponImage = GetComponentInChildren<Image>();
         }
     }
 
@@ -32,12 +33,19 @@ public class UI_PlayerWeapons : MonoBehaviour
         _playerBombFire = player.GetComponent<PlayerBombFire>();
 
         _player.OnModeChanged += OnPlayerModeChanged;
-        _playerGunFire.OnBulletChanged += OnPlayerGunFired;
+        _playerGunFire.OnBulletChanged += OnPlayerBulletChanged;
         _playerBombFire.OnBombFired += OnPlayerBombFired;
 
         OnPlayerModeChanged(_player.WeaponMode);
-        OnPlayerGunFired(_playerGunFire.BulletCount, _playerGunFire.MaxBulletCount);
+        OnPlayerBulletChanged(_playerGunFire.BulletCount, _playerGunFire.MaxBulletCount);
         OnPlayerBombFired(_playerBombFire.BombCount);
+    }
+
+    private void OnDestroy()
+    {
+        _player.OnModeChanged -= OnPlayerModeChanged;
+        _playerGunFire.OnBulletChanged -= OnPlayerBulletChanged;
+        _playerBombFire.OnBombFired -= OnPlayerBombFired;
     }
 
     private void OnPlayerModeChanged(WeaponMode mode)
@@ -60,7 +68,7 @@ public class UI_PlayerWeapons : MonoBehaviour
         }
     }
 
-    private void OnPlayerGunFired(int bulletCount, int maxBulletCount)
+    private void OnPlayerBulletChanged(int bulletCount, int maxBulletCount)
     {
         _bulletCountText.text = $"{bulletCount} / {maxBulletCount}";
     }
