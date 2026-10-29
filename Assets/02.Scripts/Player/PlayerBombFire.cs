@@ -14,11 +14,13 @@ public class PlayerBombFire : MonoBehaviour
     private float _chargeSpeed;
     
     private Animator _animator;
+    private Player _player;
     
     
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
+        _player = GetComponent<Player>();
         
         _throwPower = _minThrowPower;
         _chargeSpeed = (_maxThrowPower - _minThrowPower) / _maxChargeTime;
@@ -29,6 +31,14 @@ public class PlayerBombFire : MonoBehaviour
         if (GameManager.Instance.State != GameState.Playing)
             return;
 
+        if (_player.WeaponMode != WeaponMode.Normal)
+            return;
+        
+        UpdateBomb();
+    }
+
+    private void UpdateBomb()
+    {
         // 1. 마우스 오른쪽 버튼 입력 받기
         if (Input.GetButtonDown("Fire2"))
         {
