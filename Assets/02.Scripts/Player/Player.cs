@@ -6,58 +6,64 @@ public class Player : MonoBehaviour, IDamageable
     [Header("스탯")]
     [SerializeField] private float _maxHealth = 100f;
     private float _health;
-    
+
     public float MaxHealth => _maxHealth;
     public float Health => _health;
 
     private WeaponMode _weaponMode = WeaponMode.Normal;
     public WeaponMode WeaponMode => _weaponMode;
-    
+
 
     // Action 자료형: 함수(들)를 저장할 수 있다.
     public event Action OnDamaged = null;
-    
+    public event Action<WeaponMode> OnModeChanged;
+
     private Animator _animator;
     private int _injuredLayerIndex;
-    
-    
+
+
+    private void Awake()
+    {
+        _health = _maxHealth;
+    }
+
     private void Start()
     {
         _animator = GetComponentInChildren<Animator>();
         _injuredLayerIndex = _animator.GetLayerIndex("Injured Layer");
-        
-        _health = _maxHealth;
     }
 
     private void Update()
     {
         if (GameManager.Instance.State != GameState.Playing)
             return;
-        
+
         // 숫자 키 1은 일반 모드, 2는 저격 모드
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             _weaponMode = WeaponMode.Normal;
+            OnModeChanged?.Invoke(_weaponMode);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             _weaponMode = WeaponMode.Sniper;
+            OnModeChanged?.Invoke(_weaponMode);
         }
     }
 
     public void TakeDamage(DamageInfo damageInfo)
     {
         if (_health <= 0f) return;
-        
+
         _health -= damageInfo.Value;
 
         // 체력에 따라 Injured Layer의 가중치를 바꿔준다.
         float healthPercent = _health / _maxHealth;
         float injured = Mathf.InverseLerp(0.5f, 0f, healthPercent);
         _animator.SetLayerWeight(_injuredLayerIndex, injured);
-        
+
         OnDamaged?.Invoke();
-        
+
         Debug.Log($"플레이어가 맞았다. 대미지 {damageInfo.Value}, 남은 체력 {_health}");
         if (_health <= 0f)
         {
