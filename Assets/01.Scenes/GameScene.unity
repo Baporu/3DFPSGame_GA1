@@ -4252,6 +4252,7 @@ GameObject:
   - component: {fileID: 1620558215}
   - component: {fileID: 1620558216}
   - component: {fileID: 1620558217}
+  - component: {fileID: 1620558218}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -4425,7 +4426,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBombFire
   _firePoint: {fileID: 2015785248}
   _bombPrefab: {fileID: 64837993550276244, guid: 9a61cdad899c6ca44b785e76de4d9420, type: 3}
-  _throwPower: 15
+  _minThrowPower: 10
+  _maxThrowPower: 20
+  _maxChargeTime: 5
 --- !u!114 &1620558217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4439,6 +4442,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _maxHealth: 100
+--- !u!114 &1620558218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620558207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d2bc007d915f84580abb404b00fc98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerZoom
 --- !u!1 &1667874670
 GameObject:
   m_ObjectHideFlags: 0
