@@ -1812,10 +1812,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drum (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6600355116744273036, guid: 21aa65565522b14489a88b90019bb6df, type: 3}
-      propertyPath: m_Carve
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4618,10 +4614,6 @@ PrefabInstance:
     - target: {fileID: 1904464265545379840, guid: 21aa65565522b14489a88b90019bb6df, type: 3}
       propertyPath: m_Name
       value: Drum (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600355116744273036, guid: 21aa65565522b14489a88b90019bb6df, type: 3}
-      propertyPath: m_CarveOnlyStationary
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
