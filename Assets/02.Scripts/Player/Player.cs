@@ -49,6 +49,11 @@ public class Player : MonoBehaviour, IDamageable
             _weaponMode = WeaponMode.Sniper;
             OnModeChanged?.Invoke(_weaponMode);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _weaponMode = WeaponMode.Melee;
+            OnModeChanged?.Invoke(_weaponMode);
+        }
     }
 
     public void TakeDamage(DamageInfo damageInfo)

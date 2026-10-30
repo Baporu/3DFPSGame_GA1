@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class UI_PlayerWeapons : MonoBehaviour
 {
     [SerializeField] private Image _weaponImage;
-    [SerializeField] private Sprite _normalSprite;
-    [SerializeField] private Sprite _sniperSprite;
+    [SerializeField] private Sprite[] _modeIcons;
     [SerializeField] private TextMeshProUGUI _weaponModeText;
     [SerializeField] private TextMeshProUGUI _bulletCountText;
     [SerializeField] private TextMeshProUGUI _bombCountText;
@@ -50,16 +49,20 @@ public class UI_PlayerWeapons : MonoBehaviour
 
     private void OnPlayerModeChanged(WeaponMode mode)
     {
+        _weaponImage.sprite = _modeIcons[(int)mode];
+
         switch (mode)
         {
             case WeaponMode.Normal:
-                _weaponImage.sprite = _normalSprite;
                 _weaponModeText.text = "일반 모드";
                 break;
 
             case WeaponMode.Sniper:
-                _weaponImage.sprite = _sniperSprite;
                 _weaponModeText.text = "저격 모드";
+                break;
+
+            case WeaponMode.Melee:
+                _weaponModeText.text = "근접 모드";
                 break;
 
             default:
