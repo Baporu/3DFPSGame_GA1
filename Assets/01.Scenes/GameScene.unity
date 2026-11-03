@@ -1990,6 +1990,7 @@ GameObject:
   - component: {fileID: 119406143}
   - component: {fileID: 119406142}
   - component: {fileID: 119406141}
+  - component: {fileID: 119406145}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2088,6 +2089,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &119406145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119406140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4155cd6943affe04988de00ace20fddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_GameState
+  _stateText: {fileID: 659341660}
+  _optionPopup: {fileID: 591752214}
 --- !u!1001 &120449545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3781,7 +3796,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 223413232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 119406145}
+        m_TargetAssemblyTypeName: UI_GameState, Assembly-CSharp
+        m_MethodName: OnClickResume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &223413232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16217,8 +16244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930faa4c6c27f4d4a81ee1414705bbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  _stateText: {fileID: 659341660}
-  _optionPopup: {fileID: 591752214}
 --- !u!4 &824612821
 Transform:
   m_ObjectHideFlags: 0
@@ -37601,7 +37626,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1875454434}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 119406145}
+        m_TargetAssemblyTypeName: UI_GameState, Assembly-CSharp
+        m_MethodName: OnClickQuit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1875454434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41279,7 +41316,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2018521035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 119406145}
+        m_TargetAssemblyTypeName: UI_GameState, Assembly-CSharp
+        m_MethodName: OnClickRestart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2018521035
 MonoBehaviour:
   m_ObjectHideFlags: 0

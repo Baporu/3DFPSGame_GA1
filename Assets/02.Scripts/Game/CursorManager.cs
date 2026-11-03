@@ -3,9 +3,10 @@ using UnityEngine;
 // 마우스 커서를 화면 가운데에 잠그고 숨긴다.
 public class CursorManager : SingletonBehaviour<CursorManager>
 {
-    
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         LockCursor();
     }
 
@@ -13,7 +14,7 @@ public class CursorManager : SingletonBehaviour<CursorManager>
     private void Update()
     {
         if (GameManager.Instance.State != GameState.Playing) return;
-        
+
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             UnlockCursor();
@@ -23,8 +24,8 @@ public class CursorManager : SingletonBehaviour<CursorManager>
             LockCursor();
         }
     }
-    
-    
+
+
 
     public void LockCursor()
     {
