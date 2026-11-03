@@ -83,6 +83,8 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     public void GameOver()
     {
+        // 게임오버 팝업의 버튼을 누를 수 있도록 커서를 보이게 한다.
+        CursorManager.Instance.UnlockCursor();
         ChangeState(GameState.GameOver);
     }
 
