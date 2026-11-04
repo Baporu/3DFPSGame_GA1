@@ -28,6 +28,12 @@ public class UI_Login : MonoBehaviour
 
     private Mode _mode = Mode.Login;
 
+    // 계정 데이터 보관 클래스
+    // 로그인 로직은 다른 프로젝트에서 재활용할 수도 있으니 데이터 저장을 별도 책임으로 분리한다.
+    // (데이터 보관하는 클래스명만 변경하면 되므로 -> 레포지토리(Repository) 패턴)
+    private PlayerPrefsAccountRepository _repository = new PlayerPrefsAccountRepository();
+
+
     private void Start()
     {
         _loginButton.onClick.AddListener(Login);
@@ -74,6 +80,12 @@ public class UI_Login : MonoBehaviour
             return;
         }
 
+        if (_repository.CheckPassword(id, password) == false)
+        {
+            _messageText.text = "아이디와 비밀번호를 확인해 주세요.";
+            return;
+        }
+
         SceneManager.LoadScene(_gameSceneName);
     }
 
@@ -83,7 +95,13 @@ public class UI_Login : MonoBehaviour
         string password = _passwordInput.text;
         string passwordConfirm = _passwordConfirmInput.text;
 
-        // Todo: ID 규칙과 비밀번호
+        // Todo: ID와 비밀번호 (+ 닉네임) 규칙
+        // ID: 이메일
+        // 비밀번호: 영어만 되며 특수문자나 대문자 하나 이상을 포함한 7~15 글자
+        // 규칙이 여기서만 쓰일까?
+        // 정리 과제
+        //   - 정규표현식
+        //   - 명세 패턴
 
         if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(password))
         {
@@ -97,8 +115,15 @@ public class UI_Login : MonoBehaviour
             return;
         }
 
-        // Todo: 중복 ID 검사
-        // Todo: 실제 호원가입 데이터 저장
+        // 중복 ID 검사
+        if (_repository.Exists(id))
+        {
+            _messageText.text = "이미 존재하는 아이디입니다.";
+            return;
+        }
+
+        // 실제 회원가입 데이터 저장
+        _repository.Register(id, password);
 
         GotoLogin();
         _messageText.text = "가입했습니다. 로그인 해주세요.";
