@@ -28,7 +28,7 @@ dotnet format 3DFPSGame_GA1.sln --severity warn --include Assets/02.Scripts/
 
 - **커밋 메시지**: `type(scope)?: 설명` 형식. 허용 type은 `asset|build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test`. 형식이 틀리면 `commit-msg` hook이 커밋을 거부한다.
 - **pre-commit**: 위의 `dotnet format --verify-no-changes`가 실행되어 경고가 하나라도 있으면 커밋이 실패한다.
-- `main`에 `Assets/02.Scripts/**/*.cs` 변경이 push되면 GitHub Actions(`.github/workflows/gemini-commit-review.yml`)가 Gemini로 해당 커밋을 리뷰해 커밋 코멘트를 단다. 리뷰 기준은 `Docs/CodeReviewGuide.md`.
+- `main` 또는 `dev-main`에 `Assets/02.Scripts/**/*.cs` 변경이 push되면 GitHub Actions(`.github/workflows/gemini-commit-review.yml`)가 Gemini로 해당 커밋을 리뷰해 커밋 코멘트를 단다. 리뷰 기준은 `Docs/CodeReviewGuide.md`.
 
 ## 코드 스타일 (`.editorconfig`, `Assets/02.Scripts/**.cs`에만 적용)
 

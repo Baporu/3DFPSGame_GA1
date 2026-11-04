@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev-main
     paths:
       - 'Assets/02.Scripts/**/*.cs'
   workflow_dispatch:
