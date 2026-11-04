@@ -27,21 +27,15 @@ public class UI_Login : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _messageText; // 안내 글자
     [SerializeField] private string _gameSceneName = "GameScene"; // 로그인하면 불러올 씬
 
-    // ID 규칙: 이메일 또는 영문, 숫자, -, @, _를 사용한 3~20 글자
-    // 이메일: 로컬 부분(영문 숫자 . _ + -) @ 도메인(영문 숫자 - 를 점으로 구분, 점 1개 이상)
-    private static readonly Regex IdRegex = new Regex(
-        @"^(?:[A-Za-z0-9._+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+|[A-Za-z0-9@_-]{3,20})\z");
-
-    // 비밀번호 규칙: 대문자, 소문자, 숫자, 기호를 모두 포함한 7~15 글자 (공백/한글 등 ASCII 밖 문자 불가)
-    private static readonly Regex PasswordRegex = new Regex(
-        @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])[\x21-\x7E]{7,15}\z");
-
     private Mode _mode = Mode.Login;
 
     // 계정 데이터 보관 클래스
     // 로그인 로직은 다른 프로젝트에서 재활용할 수도 있으니 데이터 저장을 별도 책임으로 분리한다.
     // (데이터 보관하는 클래스명만 변경하면 되므로 -> 레포지토리(Repository) 패턴)
     private PlayerPrefsAccountRepository _repository = new PlayerPrefsAccountRepository();
+
+    private AccountIdSpecification _idSpec = new AccountIdSpecification();
+    private AccountPasswordSpecification _passwordSpec = new AccountPasswordSpecification();
 
 
     private void Start()
@@ -120,21 +114,25 @@ public class UI_Login : MonoBehaviour
         //   - 정규표현식
         //   - 명세 패턴
 
+        // 다른 규칙들도 분리를 해야 할까?
+        // 해도 되고 안 해도 되고. 필요한 경우에는 분리한다.
         if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(password))
         {
             _messageText.text = "아이디와 비밀번호를 입력해 주세요.";
             return;
         }
 
-        if (IdRegex.IsMatch(id) == false)
+        // ID 규칙: 이메일 또는 영문, 숫자, -, @, _를 사용한 3~20 글자
+        if (_idSpec.IsSatisfiedBy(id) == false)
         {
-            _messageText.text = "아이디는 이메일 또는 영문, 숫자, -, @, _를 사용한 3~20글자여야 합니다.";
+            _messageText.text = _idSpec.ErrorMessage;
             return;
         }
 
-        if (PasswordRegex.IsMatch(password) == false)
+        // 비밀번호 규칙: 대문자, 소문자, 숫자, 기호를 모두 포함한 7~15 글자 (공백/한글 등 ASCII 밖 문자 불가)
+        if (_passwordSpec.IsSatisfiedBy(password) == false)
         {
-            _messageText.text = "비밀번호는 대문자, 소문자, 숫자, 기호를 모두 포함한 7~15글자여야 합니다.";
+            _messageText.text = _passwordSpec.ErrorMessage;
             return;
         }
 
