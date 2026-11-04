@@ -1343,6 +1343,7 @@ GameObject:
   - component: {fileID: 572333966}
   - component: {fileID: 572333965}
   - component: {fileID: 572333964}
+  - component: {fileID: 572333967}
   m_Layer: 0
   m_Name: IdInputField
   m_TagString: Untagged
@@ -1509,6 +1510,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572333962}
   m_CullTransparentMesh: 1
+--- !u!114 &572333967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572333962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edae50e45a505f143b336943dbd95af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_InputFeedback
+  _focusScale: 1.03
+  _focusDuration: 0.12
+  _shakeDuration: 0.35
+  _shakeMagnitude: 14
+  _shakeFrequency: 5
 --- !u!1 &650831103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,6 +1539,7 @@ GameObject:
   - component: {fileID: 650831107}
   - component: {fileID: 650831106}
   - component: {fileID: 650831105}
+  - component: {fileID: 650831108}
   m_Layer: 0
   m_Name: GoRegisterButton
   m_TagString: Untagged
@@ -1630,6 +1649,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650831103}
   m_CullTransparentMesh: 1
+--- !u!114 &650831108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650831103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5645efc53847fcf49a7a38a09d6333ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ButtonFeedback
+  _hoverScale: 1.08
+  _pressScale: 0.94
+  _duration: 0.15
 --- !u!1 &661241754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,6 +2070,7 @@ GameObject:
   - component: {fileID: 807842027}
   - component: {fileID: 807842028}
   - component: {fileID: 807842029}
+  - component: {fileID: 807842030}
   m_Layer: 0
   m_Name: LoginCanvas
   m_TagString: Untagged
@@ -2130,6 +2165,31 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &807842030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807842025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85c64182f095f8419667deb42d8e10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LoginIntro
+  _title: {fileID: 212284390}
+  _titleDropDistance: 80
+  _titleDuration: 0.6
+  _floatAmplitude: 6
+  _floatSpeed: 1.2
+  _loginPanel: {fileID: 1508671872}
+  _registerPanel: {fileID: 1265606199}
+  _goRegisterButton: {fileID: 650831105}
+  _backButton: {fileID: 859088614}
+  _stagger: 0.08
+  _itemDuration: 0.45
+  _slideDistance: 40
+  _panelFadeDuration: 0.2
 --- !u!1 &859088612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2202,7 @@ GameObject:
   - component: {fileID: 859088616}
   - component: {fileID: 859088615}
   - component: {fileID: 859088614}
+  - component: {fileID: 859088617}
   m_Layer: 0
   m_Name: BackButton
   m_TagString: Untagged
@@ -2251,6 +2312,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859088612}
   m_CullTransparentMesh: 1
+--- !u!114 &859088617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859088612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5645efc53847fcf49a7a38a09d6333ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ButtonFeedback
+  _hoverScale: 1.08
+  _pressScale: 0.94
+  _duration: 0.15
 --- !u!1 &876025123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,6 +2339,7 @@ GameObject:
   - component: {fileID: 876025127}
   - component: {fileID: 876025126}
   - component: {fileID: 876025125}
+  - component: {fileID: 876025128}
   m_Layer: 0
   m_Name: PasswordInputField
   m_TagString: Untagged
@@ -2429,6 +2506,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876025123}
   m_CullTransparentMesh: 1
+--- !u!114 &876025128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876025123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edae50e45a505f143b336943dbd95af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_InputFeedback
+  _focusScale: 1.03
+  _focusDuration: 0.12
+  _shakeDuration: 0.35
+  _shakeMagnitude: 14
+  _shakeFrequency: 5
 --- !u!1 &934239937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,6 +2882,7 @@ GameObject:
   - component: {fileID: 1112505898}
   - component: {fileID: 1112505897}
   - component: {fileID: 1112505896}
+  - component: {fileID: 1112505899}
   m_Layer: 0
   m_Name: IdInputField
   m_TagString: Untagged
@@ -2954,6 +3049,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112505894}
   m_CullTransparentMesh: 1
+--- !u!114 &1112505899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112505894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edae50e45a505f143b336943dbd95af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_InputFeedback
+  _focusScale: 1.03
+  _focusDuration: 0.12
+  _shakeDuration: 0.35
+  _shakeMagnitude: 14
+  _shakeFrequency: 5
 --- !u!1 &1141114764
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,6 +3215,7 @@ GameObject:
   - component: {fileID: 1223960692}
   - component: {fileID: 1223960691}
   - component: {fileID: 1223960690}
+  - component: {fileID: 1223960693}
   m_Layer: 0
   m_Name: RegisterButton
   m_TagString: Untagged
@@ -3212,6 +3325,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223960688}
   m_CullTransparentMesh: 1
+--- !u!114 &1223960693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223960688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5645efc53847fcf49a7a38a09d6333ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ButtonFeedback
+  _hoverScale: 1.08
+  _pressScale: 0.94
+  _duration: 0.15
 --- !u!1 &1265606198
 GameObject:
   m_ObjectHideFlags: 0
@@ -3474,6 +3602,7 @@ GameObject:
   - component: {fileID: 1421236112}
   - component: {fileID: 1421236114}
   - component: {fileID: 1421236113}
+  - component: {fileID: 1421236115}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -3538,6 +3667,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421236111}
   m_CullTransparentMesh: 1
+--- !u!114 &1421236115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421236111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7341c2b6a84b6f34ca57ca25ba4baf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_BackgroundMotion
+  _baseScale: 1.1
+  _zoomAmount: 0.05
+  _zoomPeriod: 30
+  _driftDistance: {x: 30, y: 15}
+  _driftPeriod: 40
 --- !u!1 &1492317738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,6 +3696,7 @@ GameObject:
   - component: {fileID: 1492317742}
   - component: {fileID: 1492317741}
   - component: {fileID: 1492317740}
+  - component: {fileID: 1492317743}
   m_Layer: 0
   m_Name: PasswordInputField
   m_TagString: Untagged
@@ -3716,6 +3863,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492317738}
   m_CullTransparentMesh: 1
+--- !u!114 &1492317743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492317738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edae50e45a505f143b336943dbd95af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_InputFeedback
+  _focusScale: 1.03
+  _focusDuration: 0.12
+  _shakeDuration: 0.35
+  _shakeMagnitude: 14
+  _shakeFrequency: 5
 --- !u!1 &1508671871
 GameObject:
   m_ObjectHideFlags: 0
@@ -3767,6 +3931,7 @@ GameObject:
   - component: {fileID: 1531503467}
   - component: {fileID: 1531503466}
   - component: {fileID: 1531503465}
+  - component: {fileID: 1531503468}
   m_Layer: 0
   m_Name: LoginButton
   m_TagString: Untagged
@@ -3876,6 +4041,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531503463}
   m_CullTransparentMesh: 1
+--- !u!114 &1531503468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531503463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5645efc53847fcf49a7a38a09d6333ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ButtonFeedback
+  _hoverScale: 1.08
+  _pressScale: 0.94
+  _duration: 0.15
 --- !u!1 &1687400133
 GameObject:
   m_ObjectHideFlags: 0
@@ -4289,6 +4469,7 @@ GameObject:
   - component: {fileID: 2069011478}
   - component: {fileID: 2069011477}
   - component: {fileID: 2069011476}
+  - component: {fileID: 2069011479}
   m_Layer: 0
   m_Name: PasswordConfirmInputField
   m_TagString: Untagged
@@ -4455,6 +4636,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069011474}
   m_CullTransparentMesh: 1
+--- !u!114 &2069011479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069011474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edae50e45a505f143b336943dbd95af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_InputFeedback
+  _focusScale: 1.03
+  _focusDuration: 0.12
+  _shakeDuration: 0.35
+  _shakeMagnitude: 14
+  _shakeFrequency: 5
 --- !u!1 &2109163362
 GameObject:
   m_ObjectHideFlags: 0
