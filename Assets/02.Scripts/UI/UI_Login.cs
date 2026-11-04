@@ -1,7 +1,5 @@
-using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_Login : MonoBehaviour
@@ -90,7 +88,7 @@ public class UI_Login : MonoBehaviour
             return;
         }
 
-        SceneManager.LoadScene(_gameSceneName);
+        SceneLoader.Load(_gameSceneName);
     }
 
     private void Register()
