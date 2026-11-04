@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,15 @@ public class UI_Login : MonoBehaviour
     [Header("기타")]
     [SerializeField] private TextMeshProUGUI _messageText; // 안내 글자
     [SerializeField] private string _gameSceneName = "GameScene"; // 로그인하면 불러올 씬
+
+    // ID 규칙: 이메일 또는 영문, 숫자, -, @, _를 사용한 3~20 글자
+    // 이메일: 로컬 부분(영문 숫자 . _ + -) @ 도메인(영문 숫자 - 를 점으로 구분, 점 1개 이상)
+    private static readonly Regex IdRegex = new Regex(
+        @"^(?:[A-Za-z0-9._+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+|[A-Za-z0-9@_-]{3,20})\z");
+
+    // 비밀번호 규칙: 대문자, 소문자, 숫자, 기호를 모두 포함한 7~15 글자 (공백/한글 등 ASCII 밖 문자 불가)
+    private static readonly Regex PasswordRegex = new Regex(
+        @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])[\x21-\x7E]{7,15}\z");
 
     private Mode _mode = Mode.Login;
 
@@ -95,9 +105,16 @@ public class UI_Login : MonoBehaviour
         string password = _passwordInput.text;
         string passwordConfirm = _passwordConfirmInput.text;
 
-        // Todo: ID와 비밀번호 (+ 닉네임) 규칙
-        // ID: 이메일
-        // 비밀번호: 영어만 되며 특수문자나 대문자 하나 이상을 포함한 7~15 글자
+        // ID: 이메일 or 영문, 숫자, -, @, _를 사용한 3~20 글자
+        // 비밀번호: 대문자 소문자 숫자 기호를 포함한 7~15 글자
+
+        // 정규표현식(정규식)
+        // 문자열에서 특정한 규칙이나 패턴을 찾기 위해 사용하는 문법
+        // - 데이터 검증 (이메일 형식, 주민번호 형식, 비밀번호 형식)
+        // - 문자열 검색 (ToDo라는 게 있냐?, 한국어가 있냐?)
+        // - 문자열 치환 (규칙에 맞는 문자열을 찾아서 다른 문자열로 변경)
+        // - 웹 크롤링 & 파싱
+
         // 규칙이 여기서만 쓰일까?
         // 정리 과제
         //   - 정규표현식
@@ -109,9 +126,15 @@ public class UI_Login : MonoBehaviour
             return;
         }
 
-        if (password != passwordConfirm)
+        if (IdRegex.IsMatch(id) == false)
         {
-            _messageText.text = "비밀번호 확인이 맞지 않습니다.";
+            _messageText.text = "아이디는 이메일 또는 영문, 숫자, -, @, _를 사용한 3~20글자여야 합니다.";
+            return;
+        }
+
+        if (PasswordRegex.IsMatch(password) == false)
+        {
+            _messageText.text = "비밀번호는 대문자, 소문자, 숫자, 기호를 모두 포함한 7~15글자여야 합니다.";
             return;
         }
 
@@ -119,6 +142,12 @@ public class UI_Login : MonoBehaviour
         if (_repository.Exists(id))
         {
             _messageText.text = "이미 존재하는 아이디입니다.";
+            return;
+        }
+
+        if (password != passwordConfirm)
+        {
+            _messageText.text = "비밀번호 확인이 맞지 않습니다.";
             return;
         }
 
